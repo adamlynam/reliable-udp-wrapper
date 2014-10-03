@@ -1,0 +1,43 @@
+This is the README file for directory prac1/Java.
+
+This directory holds example Java code for an echo client (DgEchoClient.java)
+and server (DgEchoServer.java).
+
+The echo client reads lines from stdin, writes them to a communications
+socket, then reads the socket and writes the returned message to stdout.
+The server reads a socket, changes the first character, and writes it back
+to the program which called it.  The reason for changing the first character
+is so you can make sure you're not calling the Unix system echo server.
+
+Both client and server use udp - the Internet connectionless datagram
+service.  Both client and server can be compiled using 'javac' - for
+example, to compile the client:
+	javac DgEchoClient.java
+
+Once you have compiled the echo programs, use them by:
+
+  First start the server in one window:
+    DgEchoServer -p <your port number>
+
+  Then start your client:
+    DgEchoClient -h <host machine> -p <your port number>
+
+	NOTE: You probably will need to invoke these commands using the JVM
+		"java".  For example, you would start the server:
+
+			java DgEchoServer -p <Your port number>
+
+  The host machine is the machine your client is running on - probably
+  rose or lucy.
+
+  Test them by typing whatever you want to - the first character of
+  each line should be changed, but the rest should be what you typed.
+
+  The client will terminate on end of file (control-d from stdin).
+
+  Be sure to terminate the server when you've finished by typing
+  control-c.  Or, if you're running the server in the background (using
+  '&'), be sure to terminate the server when you've finished by using the
+  Unix kill command - find the process id number using the ps command
+  then type:  kill pid#
+
